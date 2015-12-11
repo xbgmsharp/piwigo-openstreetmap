@@ -26,7 +26,8 @@
 if (!defined('PHPWG_ROOT_PATH')) die('Hacking attempt!');
 
 // Add GPX support file extensions
-array_push($conf['file_ext'], 'gpx');
+// TF, 22.10.2015: handle kml as well!
+array_push($conf['file_ext'], 'gpx', 'kml');
 
 // Hook on to an event to display videos as standard images
 add_event_handler('render_element_content', 'osm_render_media', EVENT_HANDLER_PRIORITY_NEUTRAL, 2);
@@ -41,9 +42,10 @@ function osm_render_media($content, $picture)
 	{
 		return $content;
 	}
-	// If not a GPX file
+	// If not a GPX or KML file
 	if ( (array_key_exists('path', @$picture['current']))
-		&& strpos($picture['current']['path'],".gpx") === false)
+		&& (strpos($picture['current']['path'],".gpx") === false
+			&& strpos($picture['current']['path'],".kml") === false))
 	{
 		return $content;
 	}
@@ -66,10 +68,17 @@ function osm_render_media($content, $picture)
 
 	$js = osm_get_js($conf, $local_conf, $js_data);
 
-	// Select the template
-	$template->set_filenames(
-            array('osm_content' => dirname(__FILE__)."/template/osm-gpx.tpl")
-	);
+	// Select the template based on the extension
+	if (strpos($picture['current']['path'],".gpx") === false)
+	{
+		$template->set_filenames(
+				array('osm_content' => dirname(__FILE__)."/template/osm-kml.tpl")
+		);
+	} else {
+		$template->set_filenames(
+				array('osm_content' => dirname(__FILE__)."/template/osm-gpx.tpl")
+		);
+	}
 
 	// Assign the template variables
 	$template->assign(
@@ -91,7 +100,7 @@ function osm_render_media($content, $picture)
 add_event_handler('get_mimetype_location', 'osm_get_mimetype_icon');
 function osm_get_mimetype_icon($location, $element_info)
 {
-	if ($element_info == 'gpx')
+	if ($element_info == 'gpx' || $element_info == 'kml')
 	{
 		$location = 'plugins/'
 			. basename(dirname(__FILE__))
