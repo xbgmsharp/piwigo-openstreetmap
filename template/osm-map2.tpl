@@ -475,7 +475,7 @@ function toggle(arrow)
 
 		/* Update jcarousel and all witdh*/
 		if (nb_items>0) {
-			var nb_items_width = nb_items*45; /* img is 40px + margin 5px */
+			var nb_items_width = nb_items*55; /* img is 40px + margin 5px + ?? 10px */
 			var document_width = $( document ).width();
 			var nav_width = document.getElementById('ribbon-map-nav').offsetWidth;
 			var results_width = document.getElementById('ribbon-map-results').offsetWidth;

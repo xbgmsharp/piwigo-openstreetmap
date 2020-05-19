@@ -394,8 +394,8 @@ function osm_get_js($conf, $local_conf, $js_data)
                 shadowUrl: 'plugins/piwigo-openstreetmap/leaflet/images/marker-shadow.png',
                 iconSize:     [25, 41],
                 shadowSize:   [41, 41],
-                iconAnchor:   [21, 21],
-                popupAnchor:  [-10, -10]
+                iconAnchor:   [12, 41],
+                popupAnchor:  [1, -34]
             }
         });
 
