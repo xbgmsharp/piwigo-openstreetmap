@@ -197,7 +197,7 @@ function osm_get_items($page)
     $query="SELECT i.latitude, i.longitude,
     IFNULL(i.name, '') AS `name`,
     TRIM(LEADING '.' FROM IF(i.representative_ext IS NULL,
-        CONCAT(LEFT(i.path,LENGTH(i.path)-1-LENGTH(SUBSTRING_INDEX(i.path, '.', -1 ))), '-sq.', SUBSTRING_INDEX(i.path, '.', -1 )),
+        CONCAT(LEFT(i.path,CHAR_LENGTH(i.path)-1-CHAR_LENGTH(SUBSTRING_INDEX(i.path, '.', -1 ))), '-sq.', SUBSTRING_INDEX(i.path, '.', -1 )),
             REPLACE(i.path, TRIM(TRAILING '.' FROM SUBSTRING_INDEX(i.path, '/', -1 )),
                 CONCAT('pwg_representative/',
                     CONCAT(
