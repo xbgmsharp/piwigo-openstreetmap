@@ -102,6 +102,7 @@ function osm_get_items($page)
     // Limit search by category, by tag, by smartalbum
     $LIMIT_SEARCH="";
     $INNER_JOIN="";
+    $IMG_URL = "TRIM(TRAILING '/' FROM CONCAT( i.id, '/category/', IFNULL(ic.category_id, '') ) )";
     if (isset($page['section']))
     {
         if ($page['section'] === 'categories' and isset($page['category']) and isset($page['category']['id']) )
@@ -116,6 +117,7 @@ function osm_get_items($page)
             {
                 $LIMIT_SEARCH = "ic.image_id IN (".implode(',', $items).") AND ";
             }
+            $IMG_URL = "CONCAT( i.id, '".make_section_in_url($page)."' )";
         }
         if ($page['section'] === 'tags' and isset($page['category']) and isset($page['category']['id']) )
         {
@@ -207,7 +209,7 @@ function osm_get_items($page)
                 )
             )
     )) AS `pathurl`,
-    TRIM(TRAILING '/' FROM CONCAT( i.id, '/category/', IFNULL(ic.category_id, '') ) ) AS `imgurl`,
+    ".$IMG_URL." AS `imgurl`,
     IFNULL(i.comment, '') AS `comment`,
     IFNULL(i.author, '') AS `author`,
     i.width
