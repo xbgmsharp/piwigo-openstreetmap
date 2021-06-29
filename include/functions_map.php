@@ -26,6 +26,7 @@
 
 function osmcopyright($attrleaflet, $attrimagery, $attrmodule, $bl, $custombaselayer)
 {
+    return '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
     $return = "";
 
     if ($attrleaflet) $return .= '<a href="http://leafletjs.com/" target="_blank">Leaflet</a> ';
@@ -361,7 +362,7 @@ function osm_get_js($conf, $local_conf, $js_data)
         // we return directly as there is no addressPoints for GPX
         $js .= "\nvar Url = '".$baselayerurl."',
         Attribution = '".$attribution."',
-        TileLayer = new L.TileLayer(Url, {maxZoom: 18, noWrap: ".$nowarp.", attribution: Attribution});\n";
+        TileLayer = new L.TileLayer(Url, {maxZoom: 16, noWrap: ".$nowarp.", attribution: Attribution});\n";
         $js .= "var " . $divname . " = new L.Map('" . $divname . "', {" . $worldcopyjump . ", zoom: ".$zoom.", layers: [TileLayer], contextmenu: " . $local_conf['contextmenu'] . "});\n";
         $js .= $divname . ".attributionControl.setPrefix('');\n";
         $js .= "\nL.control.scale().addTo(" . $divname . ");\n";
@@ -370,13 +371,13 @@ function osm_get_js($conf, $local_conf, $js_data)
         // Create the map and get a new map instance attached and element with $divname
         $js .= "\nvar Url = '".$baselayerurl."',
         Attribution = '".$attribution."',
-        TileLayer = new L.TileLayer(Url, {maxZoom: 18, noWrap: ".$nowarp.", attribution: Attribution}),
+        TileLayer = new L.TileLayer(Url, {maxZoom: 16, noWrap: ".$nowarp.", attribution: Attribution}),
         latlng = new L.LatLng(".$local_conf['center_lat'].", ".$local_conf['center_lng'].");\n";
         $js .= "var " . $divname . " = new L.Map('" . $divname . "', {" . $worldcopyjump . ", center: latlng, ".$editor." zoom: ".$zoom.", layers: [TileLayer], contextmenu: " . $local_conf['contextmenu'] . "});\n";
         $js .= $divname . ".attributionControl.setPrefix('');\n";
         $js .= "var MarkerClusterList=[];\n";
         $js .= "if (typeof L.MarkerClusterGroup === 'function')\n";
-        $js .= "     var markers = new L.MarkerClusterGroup();\n";
+        $js .= "     var markers = new L.MarkerClusterGroup({maxClusterRadius: 30});\n";
     }
 
     if ($local_conf['control'] === true)

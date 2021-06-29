@@ -110,15 +110,15 @@ if ( $tag_groups == 1 and isset($_POST['osm_tag_submit']) )
 	$infos = array();
 	foreach ($images as $image)
 	{
-		// Fech reverse location from API
+		// Fetch reverse location from API
 		// http://wiki.openstreetmap.org/wiki/Nominatim
 		// https://nominatim.openstreetmap.org/reverse?format=xml&lat=51.082333&lon=10.366229&zoom=12
 		// https://open.mapquestapi.com/nominatim/v1/reverse.php?format=xml&lat=48.858366666667&lon=2.2942166666667&zoom=12
-		//$osm_url = "https://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&zoom=12&lat=". $image['latitude'] ."&lon=". $image['longitude'];
+		$osm_url = "https://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&zoom=12&lat=". $image['latitude'] ."&lon=". $image['longitude'] ."&accept-language=". $sync_options['language'];
 		//  As of Sept 2015 require a API KEY
 		//$osm_url = "https://open.mapquestapi.com/nominatim/v1/reverse.php?format=json&addressdetails=1&zoom=12&lat=". $image['latitude'] ."&lon=". $image['longitude'];
 		//$osm_url = "http://localhost:8443/api/". $image['latitude'] ."/". $image['longitude'];
-		$osm_url = "https://nominatim-xbgmsharp.rhcloud.com/api/". $image['latitude'] ."/". $image['longitude'] ."/". $sync_options['language'];
+		//$osm_url = "https://nominatim-xbgmsharp.rhcloud.com/api/". $image['latitude'] ."/". $image['longitude'] ."/". $sync_options['language'];
 		//print $osm_url ."<br/>";
 
 		// Ensure we do have PHP curl install
@@ -149,11 +149,11 @@ if ( $tag_groups == 1 and isset($_POST['osm_tag_submit']) )
 			);
 			$context = stream_context_create($opts);
 			if (false !== ($json = @file_get_contents($osm_url, flase, $context))) {
- 				// all good
+				// all good
 				//return $json;
 			} else {
 				// error happened
-        			//return false;
+				//return false;
 				$errors[] = "Error fetching reverse data";
 			}
 		}
@@ -166,10 +166,8 @@ if ( $tag_groups == 1 and isset($_POST['osm_tag_submit']) )
 			//print_r($response);
 
 		// If reponse include [address]
-		if (isset($response) and isset($response['success']) and isset($response['success'][0]) and isset($response['success'][0]['result'])
-			and isset($response['success'][0]['result']['address']) and is_array($response['success'][0]['result']['address']))
+		if (isset($response) and isset($response['address']) and is_array($response['address']))
 		{
-			$response['address'] = $response['success'][0]['result']['address'];
 			//print_r($response['address']);
 			//print_r($sync_options);
 			$tag_names = array();
