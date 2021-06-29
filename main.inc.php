@@ -6,6 +6,7 @@ Description: OpenStreetMap integration for piwigo
 Plugin URI: http://piwigo.org/ext/extension_view.php?eid=701
 Author: xbmgsharp
 Author URI: https://github.com/xbgmsharp/piwigo-openstreetmap
+Has Settings: webmaster
 */
 
 // Chech whether we are indeed included by Piwigo.
