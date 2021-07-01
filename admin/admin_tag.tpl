@@ -12,7 +12,7 @@
 </style>
 {/html_head}
 
-Create tags from the address base on the GPS (latitude, longitude) metadata information. 
+Create tags from the address base on the GPS (latitude, longitude) metadata information.
 <br/><br/>
 Refer to the <a href="https://github.com/xbgmsharp/piwigo-openstreetmap/wiki" target="_blanck">plugin documentation</a> for additional information. Create an <a href="https://github.com/xbgmsharp/piwigo-openstreetmap/issues" target="_blanck">issue</a> for support, or feedback, or feature request.
 
@@ -76,23 +76,23 @@ Refer to the <a href="https://github.com/xbgmsharp/piwigo-openstreetmap/wiki" ta
 	<ul>
 		<li>
 			<label>
-				{'Name of the tag group'|@translate}:
+				{'NAME_OF_TAG_GROUP'|@translate}:
 				<input type="text" name="osm_taggroup" value="{$sync_options.osm_tag_group}" placeholder="location" required="" size="30"/>
 			</label>
 		</li>
 		<li>
-			<label>{'Use as tag'|@translate} : </label><br/>
+			<label>{'USE_AS_TAG'|@translate} : </label><br/>
 			<div style="padding-left: 25px">
-				<input type="checkbox" name="osm_tag_address_suburb" value="true" {if $sync_options.osm_tag_address_suburb}checked="checked"{/if}/> {'suburb'|@translate}<br />
-				<input type="checkbox" name="osm_tag_address_city_district" value="true" {if $sync_options.osm_tag_address_city_district}checked="checked"{/if}/> {'city_district'|@translate}<br />
-				<input type="checkbox" name="osm_tag_address_city" value="true" {if $sync_options.osm_tag_address_city}checked="checked"{/if}/> {'city'|@translate}<br />
-				<input type="checkbox" name="osm_tag_address_county" value="true" {if $sync_options.osm_tag_address_county}checked="checked"{/if}/> {'county'|@translate}<br />
-				<input type="checkbox" name="osm_tag_address_state" value="true" {if $sync_options.osm_tag_address_state}checked="checked"{/if}/> {'state'|@translate}<br />
-				<input type="checkbox" name="osm_tag_address_country" value="true" {if $sync_options.osm_tag_address_country}checked="checked"{/if}/> {'country'|@translate}<br />
-				<input type="checkbox" name="osm_tag_address_postcode" value="true" {if $sync_options.osm_tag_address_postcode}checked="checked"{/if}/> {'postcode'|@translate}<br />
-				<input type="checkbox" name="osm_tag_address_country_code" value="true" {if $sync_options.osm_tag_address_country_code}checked="checked"{/if}/> {'country_code'|@translate}<br />
+				<input type="checkbox" name="osm_tag_address_suburb" value="true" {if $sync_options.osm_tag_address_suburb}checked="checked"{/if}/> {'SUBURB'|@translate}<br />
+				<input type="checkbox" name="osm_tag_address_city_district" value="true" {if $sync_options.osm_tag_address_city_district}checked="checked"{/if}/> {'CITY_DISTRICT'|@translate}<br />
+				<input type="checkbox" name="osm_tag_address_city" value="true" {if $sync_options.osm_tag_address_city}checked="checked"{/if}/> {'CITY'|@translate}<br />
+				<input type="checkbox" name="osm_tag_address_county" value="true" {if $sync_options.osm_tag_address_county}checked="checked"{/if}/> {'COUNTY'|@translate}<br />
+				<input type="checkbox" name="osm_tag_address_state" value="true" {if $sync_options.osm_tag_address_state}checked="checked"{/if}/> {'STATE'|@translate}<br />
+				<input type="checkbox" name="osm_tag_address_country" value="true" {if $sync_options.osm_tag_address_country}checked="checked"{/if}/> {'COUNTRY'|@translate}<br />
+				<input type="checkbox" name="osm_tag_address_postcode" value="true" {if $sync_options.osm_tag_address_postcode}checked="checked"{/if}/> {'POSTCODE'|@translate}<br />
+				<input type="checkbox" name="osm_tag_address_country_code" value="true" {if $sync_options.osm_tag_address_country_code}checked="checked"{/if}/> {'COUNTRY_CODE'|@translate}<br />
 			</div>
-			<small>{'Create tag using one or multiple value from the address part'|@translate}</small>
+			<small>{'USE_AS_TAG_HELP'|@translate}</small>
 		</li>
 
 		<li>
@@ -102,7 +102,7 @@ Refer to the <a href="https://github.com/xbgmsharp/piwigo-openstreetmap/wiki" ta
 			        {html_options options=$language_options selected=$language_selected}
 			      </select>
 			</div>
-			<small>{'Fetch the result in a specific language, mostly for the country and city fields, eg: (EN:Japan, ES:Japón, FR:Japon, JP:日本)'|@translate}</small>
+			<small>{'LANGUAGE_HELP'|@translate}</small>
 		</li>
 	</ul>
 

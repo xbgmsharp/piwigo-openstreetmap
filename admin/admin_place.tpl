@@ -73,12 +73,12 @@ $("#searchInput").on("keydown", function(e) {
 <form action="" method="post" id="update">
   {if isset($EDIT_PLACES_LIST)}
   <fieldset>
-    <legend>{'Edit places'|@translate}</legend>
+    <legend>{'EDIT_PLACES_LEGEND'|@translate}</legend>
     <input type="hidden" name="edit_list" value="{$EDIT_PLACES_LIST}">
     <table class="table2">
       <tr class="throw">
-        <th>{'Current'|@translate}</th>
-        <th>{'New'|@translate}</th>
+        <th>{'EDIT_PLACE_CURRENT'|@translate}</th>
+        <th>{'EDIT_PLACE_NEW'|@translate}</th>
       </tr>
       {foreach from=$places item=place}
       <tr>

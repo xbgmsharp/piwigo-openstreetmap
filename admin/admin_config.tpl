@@ -102,18 +102,18 @@ Refer to the <a href="https://github.com/xbgmsharp/piwigo-openstreetmap/wiki" ta
 				<label>{'LEFTPOPUPINFO'|@translate} : </label><br/>
 				<div style="padding-left: 25px">
 				  <input type="checkbox" name="osm_left_popupinfo_name" value="true" {if $left_menu.popupinfo_name}checked="checked"{/if}/> {'POPUPNAME'|@translate}<br />
-				  <input type="checkbox" name="osm_left_popupinfo_img" value="true" {if $left_menu.popupinfo_img}checked="checked"{/if}/> {'POPUPTHUMB'|@translate}<br /> 
-				  <input type="checkbox" name="osm_left_popupinfo_link" value="true" {if $left_menu.popupinfo_link}checked="checked"{/if}/> {'POPUPLINK'|@translate}<br /> 
-				  <input type="checkbox" name="osm_left_popupinfo_comment" value="true" {if $left_menu.popupinfo_comment}checked="checked"{/if}/> {'POPUPCOMMENT'|@translate}<br /> 
+				  <input type="checkbox" name="osm_left_popupinfo_img" value="true" {if $left_menu.popupinfo_img}checked="checked"{/if}/> {'POPUPTHUMB'|@translate}<br />
+				  <input type="checkbox" name="osm_left_popupinfo_link" value="true" {if $left_menu.popupinfo_link}checked="checked"{/if}/> {'POPUPLINK'|@translate}<br />
+				  <input type="checkbox" name="osm_left_popupinfo_comment" value="true" {if $left_menu.popupinfo_comment}checked="checked"{/if}/> {'POPUPCOMMENT'|@translate}<br />
 				  <input type="checkbox" name="osm_left_popupinfo_author" value="true" {if $left_menu.popupinfo_author}checked="checked"{/if}/> {'POPUPAUTHOR'|@translate}
 				</div>
 				<small>{'LEFTPOPUPINFO_DESC'|@translate}</small>
 			</li>
 			<li>
-				<label>{'Auto center'|@translate} : </label>
+				<label>{'AUTO_CENTER'|@translate} : </label>
 				<label><input id="autocenter_enabled" type="radio" name="osm_left_autocenter" value="true" {if $left_menu.autocenter}checked="checked"{/if} onchange="autocenter_toggle(this);"/> {'Yes'|@translate}</label>
 				<label><input type="radio" name="osm_left_autocenter" value="false" {if not $left_menu.autocenter}checked="checked"{/if} onchange="autocenter_toggle(this);"/> {'No'|@translate}</label>
-				<br/><small>{'The map will be automatically centered and zoomed to contain all infos.'|@translate}</small>
+				<br/><small>{'AUTO_CENTER_HELP'|@translate}</small>
 			</li>
 			<li id="osm_left_zoom_block">
 				<label>{'ZOOM'|@translate} : </label>

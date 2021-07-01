@@ -58,9 +58,8 @@
 		</div>
                 <div style="float: left; margin: auto; padding-left:20px; vertical-align:top;" class="photoLinks">
                         <ul style="margin:0;">
-                                <li>{'Empty values will erase coordinates'|@translate}</a></li>
-                                <li><a class="icon-trash" href="{$DELETE_URL}" onclick="return confirm('{'Are you sure?
-Latitude and Longitude will be delete.'|@translate|@escape:javascript}');">{'Erase coordinates'|@translate}</a></li>
+                                <li>{'EMPTY_COORD_VAL_WARNING'|@translate}</a></li>
+                                <li><a class="icon-trash" href="{$DELETE_URL}" onclick="return confirm('{'DELETE_COORDS_CONFIRMATION'|@translate|@escape:javascript}');">{'ERASE_COORDS'|@translate}</a></li>
                         </ul>
                 </div>
 

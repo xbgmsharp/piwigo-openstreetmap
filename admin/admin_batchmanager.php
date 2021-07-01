@@ -90,12 +90,12 @@ function osm_loc_end_element_set_global()
   <label>'.l10n('Longitude').' (-180=W to 180=E)
     <input type="text" size="9" id="osmlon" name="osmlon">
   </label>
-  </label> (Empty values will erase coordinates)
-  <label>Saved Places: 
+  </label> '.l10n( 'EMPTY_COORD_VAL_WARNING').'
+  <label>Saved Places:
     <select id="osmplaces" name="osmplaces" >
       <option value="NULL">--</option>
       '. implode("\n", $place_options) . '
-    </select> 
+    </select>
   <style type="text/css"> .map1 { height: '. $batch_global_height .'px !important; width:100% !important; margin: 5px; } </style>
   <script src="plugins/piwigo-openstreetmap/leaflet/qleaflet.jquery.js"></script>
   <div class="osm-map1 map1"></div>

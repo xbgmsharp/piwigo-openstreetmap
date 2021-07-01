@@ -73,7 +73,7 @@ if (isset($_POST['submit']))
 	}
 	elseif ( (strlen($lat)==0 and strlen($lon)==0) or (isset($_GET['delete_coords']) and $_GET['delete_coords'] == 1)) {
 		$update_query = 'latitude=NULL, longitude=NULL';
-		array_push( $page['infos'], l10n('Coordinates erased'));
+		array_push( $page['infos'], l10n('COORDS_ERASED'));
 	} else {
 		$page['errors'][] = 'Both latitude/longitude must be empty or not empty';
 	}
