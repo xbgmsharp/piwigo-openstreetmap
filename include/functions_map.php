@@ -519,9 +519,13 @@ function osm_get_js($conf, $local_conf, $js_data)
 \t}";
     if (isset($local_conf['paths'])) {
         foreach ($local_conf['paths'] as $path) {
-            $ext = pathinfo($path);
-            $ext = $ext['extension'];
-            $js .= "\nomnivore.".$ext."('".$path."').addTo(".$divname.");";
+            $ext = pathinfo($path)['extension'];
+            $geojson_path = str_replace(".$ext", '.geojson', $path);
+            if (file_exists($geojson_path) and is_readable ($geojson_path)){
+                $js .= "\nomnivore.geojson('".$geojson_path."').addTo(".$divname.");";
+            } else {
+                $js .= "\nomnivore.".$ext."('".$path."').addTo(".$divname.");";
+            }
         }
     }
     $js .= "\nif (typeof L.MarkerClusterGroup === 'function')\n";
